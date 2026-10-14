@@ -1,0 +1,11 @@
+Coloca aquí tus imágenes con estos nombres. Si un archivo no existe, la página
+muestra un emoji de respaldo en su lugar (no se rompe nada).
+
+logo.png                  Logo (cuadrado, fondo transparente)
+hero.jpg                  Foto de fondo del hero (Cartagena al atardecer), horizontal
+hero-fritos.png           Canasta de fritos con fondo transparente
+cat-empanadas.png  cat-arepas.png  cat-carimanolas.png
+cat-patacones.png  cat-bunuelos.png  cat-otros.png      (cuadradas, ~300x300)
+prod-empanadas.jpg  prod-arepa.jpg  prod-carimanola.jpg  prod-patacones.jpg
+prod-bunuelos.jpg  prod-empanada-pollo.jpg  prod-arepa-especial.jpg  prod-patacon-queso.jpg
+vendedora.jpg             Foto de la vendedora (la del banner oscuro)

@@ -1,0 +1,72 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Selecciona tu rol · FRITOS TECH{% endblock %}
+
+{% block contenido %}
+<section class="auth auth--selector">
+  <div class="container seleccion-rol">
+
+    <div class="seleccion-rol__tarjeta">
+
+      <p class="font-script seleccion-rol__saludo">
+        ¡Bienvenido a FRITOS TECH!
+      </p>
+
+      <h1 class="seleccion-rol__titulo">
+        ¿Cómo quieres participar?
+      </h1>
+
+      <p class="seleccion-rol__texto">
+        Selecciona tu rol para continuar con el inicio
+        de sesión o la creación de tu cuenta.
+      </p>
+
+      <div class="row g-3">
+
+        {% for r in roles %}
+        <div class="col-12 col-md-4">
+
+          <a
+            class="rol seleccion-rol__opcion"
+            href="{{ url_for('acceso_rol', rol=r.slug) }}"
+          >
+
+            <span class="rol__icono" aria-hidden="true">
+              <i class="bi {{ r.icono }}"></i>
+            </span>
+
+            <span class="rol__texto">
+              <strong>{{ r.nombre }}</strong>
+              <small>{{ r.desc }}</small>
+            </span>
+
+            <i
+              class="bi bi-chevron-right"
+              aria-hidden="true"
+            ></i>
+
+          </a>
+
+        </div>
+        {% endfor %}
+
+      </div>
+
+      <p class="seleccion-rol__nota">
+        <i class="bi bi-shield-check" aria-hidden="true"></i>
+        Selecciona el rol que corresponda a tu cuenta.
+      </p>
+
+      <div class="text-center mt-4">
+        <a href="{{ url_for('index') }}" class="enlace-naranja">
+          <i class="bi bi-arrow-left" aria-hidden="true"></i>
+          Volver a la página principal
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+{% endblock %}

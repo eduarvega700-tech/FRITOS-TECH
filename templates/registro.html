@@ -1,0 +1,188 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Crear cuenta · FRITOS TECH{% endblock %}
+
+{% block contenido %}
+<section class="auth">
+  <div class="container">
+    <div class="row align-items-center g-5 auth__fila">
+
+      <!-- Presentación -->
+      <div class="col-lg-5 auth__izq">
+        <p class="font-script auth__hola">Únete a</p>
+
+        <h1 class="auth__marca">
+          <span>FRITOS</span>
+          <span class="auth__marca-tech">TECH</span>
+        </h1>
+
+        <p class="font-script auth__lema">
+          El sabor local, conectado.
+        </p>
+
+        <p class="auth__texto">
+          Crea tu cuenta y empieza a formar parte de nuestra
+          comunidad.
+        </p>
+      </div>
+
+      <!-- Formulario de registro -->
+      <div class="col-lg-7">
+        <div class="auth-card auth-card--solo">
+          <div class="auth-card__col">
+
+            <span class="auth-card__icono" aria-hidden="true">
+              <i class="bi bi-person-plus"></i>
+            </span>
+
+            <h2 class="auth-card__titulo">Crear cuenta</h2>
+
+            <p class="auth-card__sub">
+              Completa tus datos para registrarte.
+            </p>
+
+            <p class="small mb-3">
+              Tipo de cuenta:
+              <strong>{{ rol.nombre }}</strong>
+            </p>
+
+            <!-- Mensajes de Flask -->
+            {% with mensajes = get_flashed_messages(with_categories=true) %}
+              {% for categoria, texto in mensajes %}
+                <div
+                  class="alert alert-{{ categoria }} py-2 small"
+                  role="alert"
+                >
+                  {{ texto }}
+                </div>
+              {% endfor %}
+            {% endwith %}
+
+            <form
+              method="post"
+              action="{{ url_for('registro_rol', rol=rol.slug) }}"
+            >
+
+              <label class="campo-etiqueta" for="nombre-registro">
+                Nombre completo
+              </label>
+
+              <div class="campo">
+                <i class="bi bi-person" aria-hidden="true"></i>
+
+                <input
+                  class="form-control"
+                  id="nombre-registro"
+                  name="nombre"
+                  type="text"
+                  placeholder="Tu nombre completo"
+                  autocomplete="name"
+                  required
+                >
+              </div>
+
+              <label class="campo-etiqueta" for="correo-registro">
+                Correo electrónico
+              </label>
+
+              <div class="campo">
+                <i class="bi bi-envelope" aria-hidden="true"></i>
+
+                <input
+                  class="form-control"
+                  id="correo-registro"
+                  name="correo"
+                  type="email"
+                  placeholder="ejemplo@correo.com"
+                  autocomplete="email"
+                  required
+                >
+              </div>
+
+              <label class="campo-etiqueta" for="clave-registro">
+                Contraseña
+              </label>
+
+              <div class="campo">
+                <i class="bi bi-lock" aria-hidden="true"></i>
+
+                <input
+                  class="form-control"
+                  id="clave-registro"
+                  name="clave"
+                  type="password"
+                  placeholder="Mínimo 8 caracteres"
+                  autocomplete="new-password"
+                  minlength="8"
+                  required
+                >
+
+                <button
+                  class="campo__ver"
+                  type="button"
+                  data-ver-clave="clave-registro"
+                  aria-label="Mostrar contraseña"
+                  aria-pressed="false"
+                >
+                  <i class="bi bi-eye-slash" aria-hidden="true"></i>
+                </button>
+              </div>
+
+              <label class="campo-etiqueta" for="confirmar-clave">
+                Confirmar contraseña
+              </label>
+
+              <div class="campo">
+                <i class="bi bi-lock-fill" aria-hidden="true"></i>
+
+                <input
+                  class="form-control"
+                  id="confirmar-clave"
+                  name="confirmar_clave"
+                  type="password"
+                  placeholder="Repite tu contraseña"
+                  autocomplete="new-password"
+                  minlength="8"
+                  required
+                >
+
+                <button
+                  class="campo__ver"
+                  type="button"
+                  data-ver-clave="confirmar-clave"
+                  aria-label="Mostrar contraseña"
+                  aria-pressed="false"
+                >
+                  <i class="bi bi-eye-slash" aria-hidden="true"></i>
+                </button>
+              </div>
+
+              <button
+                class="btn btn-fritos btn-lg rounded-pill w-100 mt-4"
+                type="submit"
+              >
+                Crear cuenta
+                <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
+              </button>
+
+            </form>
+
+            <div class="text-center mt-3">
+              <a
+                class="enlace-naranja"
+                href="{{ url_for('acceso_rol', rol=rol.slug) }}"
+              >
+                <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                Volver a iniciar sesión
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}
